@@ -17,5 +17,7 @@ namespace BlackJack.Core.Abstractions.IRepositories
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetById(int id);
         Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate);
+        Task<T?> GetByIdIncludeAsync(Expression<Func<T, bool>> predicate, string include);
     }
 }

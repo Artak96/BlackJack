@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    internal class Bet
+    public class Bet
     {
     }
 }

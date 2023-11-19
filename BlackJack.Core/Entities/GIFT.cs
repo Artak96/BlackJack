@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    internal class GIFT
+    public class GIFT
     {
     }
 }

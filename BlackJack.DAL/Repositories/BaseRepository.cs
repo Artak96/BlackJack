@@ -79,6 +79,11 @@ namespace BlackJack.DAL.Repositories
             }
         }
 
+        public async Task<T?> GetByIdIncludeAsync(Expression<Func<T, bool>> predicate, string include)
+        {
+            return await _context.Set<T>().Where(predicate).Include(include).FirstOrDefaultAsync();
+        }
+  
         public async Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate)
         {
             try
@@ -88,6 +93,11 @@ namespace BlackJack.DAL.Repositories
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
+        public async Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await  _context.Set<T>().Where(predicate).ToListAsync();
+        }
+    
         public async Task<bool> RemoveAsync(T entity)
         {
             try
