@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Enums
 {
-    public enum WinningStatus
+    public enum CardFace
     {
-        Winner,
-        WinnerBlackJack,
-        Draw,
-        Looser,
-        LooserBusted
+        A, _2, _3, _4, _5, _6, _7, _8, _9, _10, J, Q, K
     }
 }

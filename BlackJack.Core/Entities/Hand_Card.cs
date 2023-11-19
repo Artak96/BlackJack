@@ -8,5 +8,7 @@ namespace BlackJack.Core.Entities
 {
     public class Hand_Card
     {
+        public int HandId { get; set; }
+        public int CardId { get; set; }
     }
 }

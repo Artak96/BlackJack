@@ -8,5 +8,10 @@ namespace BlackJack.Core.Entities
 {
     public class Transfer
     {
+        public int Id { get; set; }
+        public int FromPlayerId { get; set; } 
+        public int ToPlayerId { get; set; } 
+        public decimal Amount { get; set; }
+        public DateTime TransferTime { get; set; }
     }
 }

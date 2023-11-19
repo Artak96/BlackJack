@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Enums
 {
-    internal class ActionType
+    public enum ActionType
     {
+        Hit,
+		Stand
     }
 }

@@ -8,5 +8,11 @@ namespace BlackJack.Core.Entities
 {
     public class GIFT
     {
+        public int Id { get; set; }
+        public int FromPlayerId { get; set; }
+        public int ToPlayerId { get; set; }
+        public string Type { get; set; }
+        public int Quantity { get; set; }
+        public DateTime GiftTime { get; set; }
     }
 }

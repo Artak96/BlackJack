@@ -8,5 +8,12 @@ namespace BlackJack.Core.Entities
 {
     public class Bet
     {
+        public int Id { get; set; }
+        public int PlayerId { get; set; }
+        public int GameId { get; set; }
+        public int RoundId { get; set; }
+        
+        public decimal Amounr { get; set;}
     }
 }
+
