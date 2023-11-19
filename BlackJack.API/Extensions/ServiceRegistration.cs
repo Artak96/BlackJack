@@ -6,7 +6,7 @@ using BlackJack.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 namespace BlackJack.API.Extensions
 {
-    public static class DeviceTrackingServiceRegistration
+    public static class ServiceRegistration
     {
         public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
