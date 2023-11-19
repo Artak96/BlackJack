@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Enums
 {
-    internal class WinningStatus
+    public enum WinningStatus
     {
+        Win = 1,
+        Lose = 2
     }
 }

@@ -1,12 +1,23 @@
-﻿using System;
+﻿using BlackJack.Core.Enums;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    internal class Action
+    public class GameAction
     {
+        [Key]
+        public int ActionId { get; set; }
+        [ForeignKey("PlayerId")]
+        public int PlayerId { get; set; }
+        [ForeignKey("RoundId")]
+        public int RoundId { get; set; }
+        public ActionType Type { get; set; }
+        public DateTime Action_Date { get; set; }
     }
 }

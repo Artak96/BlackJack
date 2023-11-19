@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Enums
 {
-    internal class Status
+    public enum GameStatus
     {
+        activ = 1,
+        completed =2
     }
 }

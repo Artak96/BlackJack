@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Enums
 {
-    internal class HandType
+    public enum HandType
     {
+        blackjack = 1,
+        bust =2,
     }
 }

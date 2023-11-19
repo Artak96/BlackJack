@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    internal class Hand_Card
+    public class Hand_Card
     {
+        [ForeignKey("CardId")]
+        public int CardId { get; set; }
+        [ForeignKey("HandId")]
+        public int HandId { get; set; }
+        public bool IsFace { get; set; }
     }
 }

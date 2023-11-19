@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Enums
 {
-    internal class Suit
+    public enum Suit
     {
+        Hearts,
+        Diamonds,
+        Clubs,
+        Spades
     }
 }
