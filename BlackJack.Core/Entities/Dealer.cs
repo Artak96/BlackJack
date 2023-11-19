@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    public class Hand_Card
+    public class Dealer
     {
-        public int HandId { get; set; }
-        public int CardId { get; set; }
-        public Card Card { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
