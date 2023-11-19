@@ -28,9 +28,10 @@ namespace BlackJack.DAL.Context
         public DbSet<Round> Rounds { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
 
-
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Hand_Card>().HasNoKey();
             base.OnModelCreating(modelBuilder);
         }
     }
