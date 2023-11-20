@@ -16,6 +16,7 @@ namespace BlackJack.Core.Entities
         public int FromPlayerId { get; set; }
         [ForeignKey("PlayerId")]
         public int ToPlayerId { get; set; }
+
         public decimal Amount { get; set; }
         public DateTime TransferTime { get; set; }
     }

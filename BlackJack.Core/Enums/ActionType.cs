@@ -14,5 +14,6 @@ namespace BlackJack.Core.Enums
         Split = 4,
         Surrender = 5,
         Insurance = 6
+
     }
 }

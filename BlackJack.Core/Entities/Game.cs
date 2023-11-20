@@ -18,5 +18,6 @@ namespace BlackJack.Core.Entities
         public decimal Min_Bet { get; set; }
         public decimal Max_Bet { get; set; }
         public int Player_Count { get; set; }
+
     }
 }

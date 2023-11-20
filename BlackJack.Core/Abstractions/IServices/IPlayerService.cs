@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlackJack.Core.Enums
+namespace BlackJack.Core.Abstractions.IServices
 {
-    public enum Suit
+    public interface IPlayerService
     {
-        Hearts,
-        Diamonds,
-        Clubs,
-        Spades
-
     }
 }

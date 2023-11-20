@@ -11,6 +11,10 @@ namespace BlackJack.Core.Entities
 {
     public class Hand
     {
+        public Hand()
+        {
+            this.Cards = new HashSet<Card>();
+        }
         [Key]
         public int HandId { get; set; }
         [ForeignKey("RoundId")]
@@ -19,7 +23,6 @@ namespace BlackJack.Core.Entities
         public int PlayerId { get; set; }
         public HandType HandType { get; set; }
         public int TotalValue { get; set; }
-
 
     }
 }

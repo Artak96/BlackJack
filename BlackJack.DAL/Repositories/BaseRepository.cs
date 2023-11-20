@@ -1,4 +1,5 @@
 ﻿using BlackJack.Core.Abstractions.IRepositories;
+using BlackJack.Core.Entities;
 using BlackJack.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.DAL.Repositories
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected readonly BlackJackDbContext _context;
 
@@ -79,6 +80,11 @@ namespace BlackJack.DAL.Repositories
             }
         }
 
+        public async Task<T?> GetByIdIncludeAsync(Expression<Func<T, bool>> predicate, string include)
+        {
+            return await _context.Set<T>().Where(predicate).Include(include).FirstOrDefaultAsync();
+        }
+  
         public async Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate)
         {
             try
@@ -88,6 +94,11 @@ namespace BlackJack.DAL.Repositories
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
+        public async Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await  _context.Set<T>().Where(predicate).ToListAsync();
+        }
+    
         public async Task<bool> RemoveAsync(T entity)
         {
             try
@@ -106,6 +117,25 @@ namespace BlackJack.DAL.Repositories
         {
             try
             {
+                foreach (var entry in _context.ChangeTracker.Entries())
+                {
+                    if (entry.Entity is BaseEntity trackable)
+                    {
+                        var now = DateTime.UtcNow;
+                        switch (entry.State)
+                        {
+                            case EntityState.Modified:
+                                trackable.LastUpdateTime = now;
+                                break;
+
+                            case EntityState.Added:
+                                trackable.CreationTime = now;
+                                trackable.LastUpdateTime = now;
+                                break;
+                        }
+                    }
+                }
+
                 await _context.SaveChangesAsync();
                 return true;
             }

@@ -20,5 +20,7 @@ namespace BlackJack.Core.Entities
         public int RoundId { get; set; }
         public decimal Amount { get; set; }
         public DateTime Bet_Date { get; set; }
+
     }
 }
+

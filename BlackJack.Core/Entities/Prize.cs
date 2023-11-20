@@ -20,6 +20,5 @@ namespace BlackJack.Core.Entities
         public string? Type { get; set; }
         public DateTime Prize_Date { get; set; }
 
-
     }
 }

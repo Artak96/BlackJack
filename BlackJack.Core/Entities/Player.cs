@@ -19,7 +19,8 @@ namespace BlackJack.Core.Entities
         public string? Mobile { get; set; }
         public decimal Balance { get; set; }
         public DateTime Last_Login { get; set; }
-
+        public bool IsMerchant { get; set; }   
+        public bool IsOwner { get; set; }
 
     }
 }

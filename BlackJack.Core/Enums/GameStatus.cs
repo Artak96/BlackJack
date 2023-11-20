@@ -10,5 +10,6 @@ namespace BlackJack.Core.Enums
     {
         activ = 1,
         completed =2
+      
     }
 }

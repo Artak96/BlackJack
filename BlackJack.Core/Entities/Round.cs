@@ -20,5 +20,8 @@ namespace BlackJack.Core.Entities
         public DateTime Start_Date { get; set; }
         public DateTime EndDate { get; set; }
         public int PlayerCount { get; set; }
+        public string Result { get; set; }
+      
+
     }
 }
