@@ -8,9 +8,10 @@ namespace BlackJack.Core.Enums
 {
     public enum Suit
     {
-        Spades, 
         Hearts,
+        Diamonds,
         Clubs,
-        Diamonds
+        Spades
+
     }
 }

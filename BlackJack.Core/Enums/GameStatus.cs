@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Enums
 {
-    public enum Status
+    public enum GameStatus
     {
-        Playing,
-		Stand
+        activ = 1,
+        completed =2
+      
     }
 }

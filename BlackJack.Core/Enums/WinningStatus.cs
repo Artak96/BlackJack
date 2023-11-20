@@ -8,10 +8,6 @@ namespace BlackJack.Core.Enums
 {
     public enum WinningStatus
     {
-        Winner,
-        WinnerBlackJack,
-        Draw,
-        Looser,
-        LooserBusted
-    }
+        Win = 1,
+        Lose = 2
 }
