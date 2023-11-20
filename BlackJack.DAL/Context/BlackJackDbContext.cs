@@ -33,6 +33,11 @@ namespace BlackJack.DAL.Context
         {
             modelBuilder.Entity<Hand_Card>().HasNoKey();
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlackJackDbContext).Assembly);
+
+            //base.OnModelCreating(modelBuilder);
+            //var entityConfigurationsAssembly = typeof(CardConfiguration).GetTypeInfo().Assembly;
+            //modelBuilder.ApplyConfigurationsFromAssembly(entityConfigurationsAssembly);
         }
     }
 }

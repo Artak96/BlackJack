@@ -1,4 +1,5 @@
 ﻿using BlackJack.Core.Abstractions.IRepositories;
+using BlackJack.Core.Entities;
 using BlackJack.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.DAL.Repositories
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected readonly BlackJackDbContext _context;
 

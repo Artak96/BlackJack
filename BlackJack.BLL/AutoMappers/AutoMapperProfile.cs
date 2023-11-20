@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace BlackJack.API.AutoMappers
+namespace BlackJack.BLL.AutoMappers
 {
     public class AutoMapperProfile : Profile
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    public class Hand
+    public class Hand:BaseEntity
     {
         public Hand()
         {
