@@ -33,8 +33,14 @@ namespace BlackJack.DAL.Migrations
                     b.Property<decimal>("Amounr")
                         .HasColumnType("numeric");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("GameId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("PlayerId")
                         .HasColumnType("integer");
@@ -55,12 +61,18 @@ namespace BlackJack.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Face")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("IsFaceUp")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Rank")
                         .IsRequired()
@@ -87,10 +99,16 @@ namespace BlackJack.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("FromPlayerId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("GiftTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Quantity")
@@ -116,10 +134,16 @@ namespace BlackJack.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("DealerId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("EndTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<float>("Percent")
@@ -148,6 +172,12 @@ namespace BlackJack.DAL.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("ParticipiantDealerId")
                         .HasColumnType("integer");
 
@@ -171,9 +201,15 @@ namespace BlackJack.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("HandType")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("PlayerId")
                         .HasColumnType("integer");
@@ -194,8 +230,16 @@ namespace BlackJack.DAL.Migrations
                     b.Property<int>("CardId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("HandId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasIndex("CardId");
 
                     b.ToTable("HandCards");
                 });
@@ -207,6 +251,12 @@ namespace BlackJack.DAL.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -232,8 +282,14 @@ namespace BlackJack.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("GameId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("PrizeId")
                         .HasColumnType("integer");
@@ -263,6 +319,9 @@ namespace BlackJack.DAL.Migrations
                     b.Property<decimal>("Balance")
                         .HasColumnType("numeric");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
@@ -274,6 +333,9 @@ namespace BlackJack.DAL.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("LastLogin")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
@@ -303,6 +365,12 @@ namespace BlackJack.DAL.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("RoundId")
                         .HasColumnType("integer");
 
@@ -323,11 +391,17 @@ namespace BlackJack.DAL.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("DealerHandValue")
                         .HasColumnType("integer");
 
                     b.Property<int>("GameId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("PlayerHandValue")
                         .HasColumnType("integer");
@@ -352,8 +426,14 @@ namespace BlackJack.DAL.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("FromPlayerId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("LastUpdateTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("ToPlayerId")
                         .HasColumnType("integer");
@@ -364,6 +444,47 @@ namespace BlackJack.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Transfers");
+                });
+
+            modelBuilder.Entity("CardHand", b =>
+                {
+                    b.Property<int>("CardsId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("HandsId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("CardsId", "HandsId");
+
+                    b.HasIndex("HandsId");
+
+                    b.ToTable("CardHand");
+                });
+
+            modelBuilder.Entity("BlackJack.Core.Entities.Hand_Card", b =>
+                {
+                    b.HasOne("BlackJack.Core.Entities.Card", "Card")
+                        .WithMany()
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Card");
+                });
+
+            modelBuilder.Entity("CardHand", b =>
+                {
+                    b.HasOne("BlackJack.Core.Entities.Card", null)
+                        .WithMany()
+                        .HasForeignKey("CardsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BlackJack.Core.Entities.Hand", null)
+                        .WithMany()
+                        .HasForeignKey("HandsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

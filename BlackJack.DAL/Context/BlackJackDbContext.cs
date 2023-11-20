@@ -1,8 +1,10 @@
 ﻿using BlackJack.Core.Entities;
+using BlackJack.Core.Entities.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Reflection.PortableExecutable;
 using System.Text;
@@ -31,13 +33,13 @@ namespace BlackJack.DAL.Context
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Hand_Card>().HasNoKey();
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlackJackDbContext).Assembly);
-
+           
             //base.OnModelCreating(modelBuilder);
-            //var entityConfigurationsAssembly = typeof(CardConfiguration).GetTypeInfo().Assembly;
-            //modelBuilder.ApplyConfigurationsFromAssembly(entityConfigurationsAssembly);
+            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlackJackDbContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
+            var entityConfigurationsAssembly = typeof(CardConfiguration).GetTypeInfo().Assembly;
+            modelBuilder.ApplyConfigurationsFromAssembly(entityConfigurationsAssembly);
         }
     }
 }

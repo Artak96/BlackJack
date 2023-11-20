@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BlackJack.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class BlackJackDb : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,9 @@ namespace BlackJack.DAL.Migrations
                     ParticipiantDealerId = table.Column<int>(type: "integer", nullable: false),
                     RoundId = table.Column<int>(type: "integer", nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
-                    CreatedTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreatedTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,7 +39,9 @@ namespace BlackJack.DAL.Migrations
                     PlayerId = table.Column<int>(type: "integer", nullable: false),
                     GameId = table.Column<int>(type: "integer", nullable: false),
                     RoundId = table.Column<int>(type: "integer", nullable: false),
-                    Amounr = table.Column<decimal>(type: "numeric", nullable: false)
+                    Amounr = table.Column<decimal>(type: "numeric", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,7 +58,9 @@ namespace BlackJack.DAL.Migrations
                     Value = table.Column<string>(type: "text", nullable: false),
                     Face = table.Column<string>(type: "text", nullable: false),
                     Rank = table.Column<string>(type: "text", nullable: false),
-                    IsFaceUp = table.Column<bool>(type: "boolean", nullable: false)
+                    IsFaceUp = table.Column<bool>(type: "boolean", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,7 +77,9 @@ namespace BlackJack.DAL.Migrations
                     EndTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: false),
                     DealerId = table.Column<int>(type: "integer", nullable: false),
-                    Percent = table.Column<float>(type: "real", nullable: false)
+                    Percent = table.Column<float>(type: "real", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,22 +96,13 @@ namespace BlackJack.DAL.Migrations
                     ToPlayerId = table.Column<int>(type: "integer", nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
-                    GiftTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    GiftTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_GIFTs", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HandCards",
-                columns: table => new
-                {
-                    HandId = table.Column<int>(type: "integer", nullable: false),
-                    CardId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
                 });
 
             migrationBuilder.CreateTable(
@@ -115,7 +114,9 @@ namespace BlackJack.DAL.Migrations
                     RoundId = table.Column<int>(type: "integer", nullable: false),
                     PlayerId = table.Column<int>(type: "integer", nullable: false),
                     HandType = table.Column<string>(type: "text", nullable: false),
-                    TotalValue = table.Column<int>(type: "integer", nullable: false)
+                    TotalValue = table.Column<int>(type: "integer", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,7 +133,9 @@ namespace BlackJack.DAL.Migrations
                     GameId = table.Column<int>(type: "integer", nullable: false),
                     RoundId = table.Column<int>(type: "integer", nullable: false),
                     Quantity = table.Column<float>(type: "real", nullable: false),
-                    TransactionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    TransactionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -147,7 +150,9 @@ namespace BlackJack.DAL.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
-                    Value = table.Column<float>(type: "real", nullable: false)
+                    Value = table.Column<float>(type: "real", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,7 +172,9 @@ namespace BlackJack.DAL.Migrations
                     Balance = table.Column<decimal>(type: "numeric", nullable: false),
                     LastLogin = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     IsMerchant = table.Column<bool>(type: "boolean", nullable: false),
-                    IsOwner = table.Column<bool>(type: "boolean", nullable: false)
+                    IsOwner = table.Column<bool>(type: "boolean", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -182,7 +189,9 @@ namespace BlackJack.DAL.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RoundId = table.Column<int>(type: "integer", nullable: false),
                     Amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    Type = table.Column<string>(type: "text", nullable: false)
+                    Type = table.Column<string>(type: "text", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -198,7 +207,9 @@ namespace BlackJack.DAL.Migrations
                     GameId = table.Column<int>(type: "integer", nullable: false),
                     DealerHandValue = table.Column<int>(type: "integer", nullable: false),
                     PlayerHandValue = table.Column<int>(type: "integer", nullable: false),
-                    Result = table.Column<string>(type: "text", nullable: false)
+                    Result = table.Column<string>(type: "text", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -214,12 +225,67 @@ namespace BlackJack.DAL.Migrations
                     FromPlayerId = table.Column<int>(type: "integer", nullable: false),
                     ToPlayerId = table.Column<int>(type: "integer", nullable: false),
                     Amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    TransferTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    TransferTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Transfers", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "HandCards",
+                columns: table => new
+                {
+                    HandId = table.Column<int>(type: "integer", nullable: false),
+                    CardId = table.Column<int>(type: "integer", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.ForeignKey(
+                        name: "FK_HandCards_Cards_CardId",
+                        column: x => x.CardId,
+                        principalTable: "Cards",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CardHand",
+                columns: table => new
+                {
+                    CardsId = table.Column<int>(type: "integer", nullable: false),
+                    HandsId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CardHand", x => new { x.CardsId, x.HandsId });
+                    table.ForeignKey(
+                        name: "FK_CardHand_Cards_CardsId",
+                        column: x => x.CardsId,
+                        principalTable: "Cards",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CardHand_Hands_HandsId",
+                        column: x => x.HandsId,
+                        principalTable: "Hands",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CardHand_HandsId",
+                table: "CardHand",
+                column: "HandsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HandCards_CardId",
+                table: "HandCards",
+                column: "CardId");
         }
 
         /// <inheritdoc />
@@ -232,7 +298,7 @@ namespace BlackJack.DAL.Migrations
                 name: "Bets");
 
             migrationBuilder.DropTable(
-                name: "Cards");
+                name: "CardHand");
 
             migrationBuilder.DropTable(
                 name: "Games");
@@ -242,9 +308,6 @@ namespace BlackJack.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "HandCards");
-
-            migrationBuilder.DropTable(
-                name: "Hands");
 
             migrationBuilder.DropTable(
                 name: "Mineral_Transactions");
@@ -263,6 +326,12 @@ namespace BlackJack.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Transfers");
+
+            migrationBuilder.DropTable(
+                name: "Hands");
+
+            migrationBuilder.DropTable(
+                name: "Cards");
         }
     }
 }

@@ -8,7 +8,8 @@ namespace BlackJack.Core.Entities
 {
     public class BaseEntity
     {
-       // public int Id { get; set; }
+        public DateTime CreationTime { get; set; }
+        public DateTime LastUpdateTime { get; set; }
 
     }
 }
