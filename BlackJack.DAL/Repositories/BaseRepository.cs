@@ -117,6 +117,25 @@ namespace BlackJack.DAL.Repositories
         {
             try
             {
+                foreach (var entry in _context.ChangeTracker.Entries())
+                {
+                    if (entry.Entity is BaseEntity trackable)
+                    {
+                        var now = DateTime.UtcNow;
+                        switch (entry.State)
+                        {
+                            case EntityState.Modified:
+                                trackable.LastUpdateTime = now;
+                                break;
+
+                            case EntityState.Added:
+                                trackable.CreationTime = now;
+                                trackable.LastUpdateTime = now;
+                                break;
+                        }
+                    }
+                }
+
                 await _context.SaveChangesAsync();
                 return true;
             }
