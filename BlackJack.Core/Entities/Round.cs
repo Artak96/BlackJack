@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    public class Round
+    public class Round:BaseEntity
     {
         [Key]
         public int RoundId { get; set; }
@@ -20,7 +20,7 @@ namespace BlackJack.Core.Entities
         public DateTime Start_Date { get; set; }
         public DateTime EndDate { get; set; }
         public int PlayerCount { get; set; }
-        public string Result { get; set; }
+        //public string Result { get; set; }
       
 
     }

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BlackJack.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class tablerelations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,161 +16,161 @@ namespace BlackJack.DAL.Migrations
                 name: "Actions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    ActionId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ParticipiantDealerId = table.Column<int>(type: "integer", nullable: false),
+                    PlayerId = table.Column<int>(type: "integer", nullable: false),
                     RoundId = table.Column<int>(type: "integer", nullable: false),
-                    Type = table.Column<string>(type: "text", nullable: false),
-                    CreatedTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Type = table.Column<int>(type: "integer", nullable: false),
+                    Action_Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Actions", x => x.Id);
+                    table.PrimaryKey("PK_Actions", x => x.ActionId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Bets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    BetId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PlayerId = table.Column<int>(type: "integer", nullable: false),
                     GameId = table.Column<int>(type: "integer", nullable: false),
                     RoundId = table.Column<int>(type: "integer", nullable: false),
-                    Amounr = table.Column<decimal>(type: "numeric", nullable: false),
+                    Amount = table.Column<decimal>(type: "numeric", nullable: false),
+                    Bet_Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bets", x => x.Id);
+                    table.PrimaryKey("PK_Bets", x => x.BetId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Cards",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    CardId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Suit = table.Column<string>(type: "text", nullable: false),
-                    Value = table.Column<string>(type: "text", nullable: false),
-                    Face = table.Column<string>(type: "text", nullable: false),
-                    Rank = table.Column<string>(type: "text", nullable: false),
+                    Value = table.Column<int>(type: "integer", nullable: false),
+                    Suit = table.Column<int>(type: "integer", nullable: false),
+                    Rank = table.Column<int>(type: "integer", nullable: false),
                     IsFaceUp = table.Column<bool>(type: "boolean", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cards", x => x.Id);
+                    table.PrimaryKey("PK_Cards", x => x.CardId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Games",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    GameId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    StartTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Status = table.Column<string>(type: "text", nullable: false),
-                    DealerId = table.Column<int>(type: "integer", nullable: false),
-                    Percent = table.Column<float>(type: "real", nullable: false),
+                    Start_Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    End_Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
+                    Min_Bet = table.Column<decimal>(type: "numeric", nullable: false),
+                    Max_Bet = table.Column<decimal>(type: "numeric", nullable: false),
+                    Player_Count = table.Column<int>(type: "integer", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Games", x => x.Id);
+                    table.PrimaryKey("PK_Games", x => x.GameId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "GIFTs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    GiftId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     FromPlayerId = table.Column<int>(type: "integer", nullable: false),
                     ToPlayerId = table.Column<int>(type: "integer", nullable: false),
-                    Type = table.Column<string>(type: "text", nullable: false),
+                    ItemType = table.Column<int>(type: "integer", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
-                    GiftTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Send_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GIFTs", x => x.Id);
+                    table.PrimaryKey("PK_GIFTs", x => x.GiftId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Hands",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    HandId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RoundId = table.Column<int>(type: "integer", nullable: false),
                     PlayerId = table.Column<int>(type: "integer", nullable: false),
-                    HandType = table.Column<string>(type: "text", nullable: false),
-                    TotalValue = table.Column<int>(type: "integer", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    HandType = table.Column<int>(type: "integer", nullable: false),
+                    TotalValue = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Hands", x => x.Id);
+                    table.PrimaryKey("PK_Hands", x => x.HandId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Mineral_Transactions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    MineralTransactionId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    PrizeId = table.Column<int>(type: "integer", nullable: false),
+                    PlayerId = table.Column<int>(type: "integer", nullable: false),
                     GameId = table.Column<int>(type: "integer", nullable: false),
-                    RoundId = table.Column<int>(type: "integer", nullable: false),
-                    Quantity = table.Column<float>(type: "real", nullable: false),
-                    TransactionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Initial_Player_Order = table.Column<int>(type: "integer", nullable: false),
+                    Score = table.Column<string>(type: "text", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Mineral_Transactions", x => x.Id);
+                    table.PrimaryKey("PK_Mineral_Transactions", x => x.MineralTransactionId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Minerals",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    MineralId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
-                    Value = table.Column<float>(type: "real", nullable: false),
+                    Value = table.Column<int>(type: "integer", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Minerals", x => x.Id);
+                    table.PrimaryKey("PK_Minerals", x => x.MineralId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Players",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    PlayerId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    PlayerId = table.Column<int>(type: "integer", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    UserName = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
+                    First_Name = table.Column<string>(type: "text", nullable: true),
+                    Last_Name = table.Column<string>(type: "text", nullable: true),
+                    User_Name = table.Column<string>(type: "text", nullable: true),
+                    Nick_Name = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Mobile = table.Column<string>(type: "text", nullable: true),
                     Balance = table.Column<decimal>(type: "numeric", nullable: false),
-                    LastLogin = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Last_Login = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     IsMerchant = table.Column<bool>(type: "boolean", nullable: false),
                     IsOwner = table.Column<bool>(type: "boolean", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -178,49 +178,54 @@ namespace BlackJack.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Players", x => x.Id);
+                    table.PrimaryKey("PK_Players", x => x.PlayerId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Prizes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    PrizeId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    RoundId = table.Column<int>(type: "integer", nullable: false),
+                    RounId = table.Column<int>(type: "integer", nullable: false),
+                    PlayerId = table.Column<int>(type: "integer", nullable: false),
                     Amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    Type = table.Column<string>(type: "text", nullable: false),
+                    Type = table.Column<string>(type: "text", nullable: true),
+                    Prize_Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Prizes", x => x.Id);
+                    table.PrimaryKey("PK_Prizes", x => x.PrizeId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Rounds",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    RoundId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     GameId = table.Column<int>(type: "integer", nullable: false),
-                    DealerHandValue = table.Column<int>(type: "integer", nullable: false),
-                    PlayerHandValue = table.Column<int>(type: "integer", nullable: false),
-                    Result = table.Column<string>(type: "text", nullable: false),
+                    Result = table.Column<int>(type: "integer", nullable: false),
+                    Min_Bet = table.Column<decimal>(type: "numeric", nullable: false),
+                    Max_Bet = table.Column<decimal>(type: "numeric", nullable: false),
+                    Start_Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    PlayerCount = table.Column<int>(type: "integer", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rounds", x => x.Id);
+                    table.PrimaryKey("PK_Rounds", x => x.RoundId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Transfers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    TransferId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     FromPlayerId = table.Column<int>(type: "integer", nullable: false),
                     ToPlayerId = table.Column<int>(type: "integer", nullable: false),
@@ -231,15 +236,40 @@ namespace BlackJack.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transfers", x => x.Id);
+                    table.PrimaryKey("PK_Transfers", x => x.TransferId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CardHand",
+                columns: table => new
+                {
+                    CardsCardId = table.Column<int>(type: "integer", nullable: false),
+                    HandsHandId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CardHand", x => new { x.CardsCardId, x.HandsHandId });
+                    table.ForeignKey(
+                        name: "FK_CardHand_Cards_CardsCardId",
+                        column: x => x.CardsCardId,
+                        principalTable: "Cards",
+                        principalColumn: "CardId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CardHand_Hands_HandsHandId",
+                        column: x => x.HandsHandId,
+                        principalTable: "Hands",
+                        principalColumn: "HandId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "HandCards",
                 columns: table => new
                 {
-                    HandId = table.Column<int>(type: "integer", nullable: false),
                     CardId = table.Column<int>(type: "integer", nullable: false),
+                    HandId = table.Column<int>(type: "integer", nullable: false),
+                    IsFace = table.Column<bool>(type: "boolean", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastUpdateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -249,43 +279,30 @@ namespace BlackJack.DAL.Migrations
                         name: "FK_HandCards_Cards_CardId",
                         column: x => x.CardId,
                         principalTable: "Cards",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CardHand",
-                columns: table => new
-                {
-                    CardsId = table.Column<int>(type: "integer", nullable: false),
-                    HandsId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CardHand", x => new { x.CardsId, x.HandsId });
-                    table.ForeignKey(
-                        name: "FK_CardHand_Cards_CardsId",
-                        column: x => x.CardsId,
-                        principalTable: "Cards",
-                        principalColumn: "Id",
+                        principalColumn: "CardId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CardHand_Hands_HandsId",
-                        column: x => x.HandsId,
+                        name: "FK_HandCards_Hands_HandId",
+                        column: x => x.HandId,
                         principalTable: "Hands",
-                        principalColumn: "Id",
+                        principalColumn: "HandId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CardHand_HandsId",
+                name: "IX_CardHand_HandsHandId",
                 table: "CardHand",
-                column: "HandsId");
+                column: "HandsHandId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HandCards_CardId",
                 table: "HandCards",
                 column: "CardId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HandCards_HandId",
+                table: "HandCards",
+                column: "HandId");
         }
 
         /// <inheritdoc />
@@ -328,10 +345,10 @@ namespace BlackJack.DAL.Migrations
                 name: "Transfers");
 
             migrationBuilder.DropTable(
-                name: "Hands");
+                name: "Cards");
 
             migrationBuilder.DropTable(
-                name: "Cards");
+                name: "Hands");
         }
     }
 }

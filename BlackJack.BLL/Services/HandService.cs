@@ -24,20 +24,20 @@ namespace BlackJack.BLL.Services
 
             foreach (var card in hand.Cards)
             {
-                if (card.Rank == "Ace")
-                {
-                    value += 11;
-                    aceCount++;
-                }
-                else if (card.Rank == "Jack" || card.Rank == "Queen" || card.Rank == "King")
-                {
-                    value += 10;
-                }
-                else
-                {
-                    // Assuming that the Value property holds the numeric value of the card
-                    value += int.Parse(card.Value);
-                }
+                //if (card.Rank == "Ace")
+                //{
+                //    value += 11;
+                //    aceCount++;
+                //}
+                //else if (card.Rank == "Jack" || card.Rank == "Queen" || card.Rank == "King")
+                //{
+                //    value += 10;
+                //}
+                //else
+                //{
+                //    // Assuming that the Value property holds the numeric value of the card
+                //    value += int.Parse(card.Value);
+                //}
             }
 
             while (value > 21 && aceCount > 0)

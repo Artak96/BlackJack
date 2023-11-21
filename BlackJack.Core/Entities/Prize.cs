@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    public class Prize
+    public class Prize : BaseEntity
     {
         [Key]
         public int PrizeId { get; set; }

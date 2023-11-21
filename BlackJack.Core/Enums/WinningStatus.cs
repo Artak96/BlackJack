@@ -10,4 +10,5 @@ namespace BlackJack.Core.Enums
     {
         Win = 1,
         Lose = 2
+    }
 }
