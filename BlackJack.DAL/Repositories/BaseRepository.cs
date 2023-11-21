@@ -125,12 +125,12 @@ namespace BlackJack.DAL.Repositories
                         switch (entry.State)
                         {
                             case EntityState.Modified:
-                                trackable.LastUpdateTime = now;
+                                trackable.EndTime = now;
                                 break;
 
                             case EntityState.Added:
                                 trackable.CreationTime = now;
-                                trackable.LastUpdateTime = now;
+                                trackable.EndTime = now;
                                 break;
                         }
                     }

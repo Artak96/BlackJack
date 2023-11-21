@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlackJack.Core.Enums
+namespace BlackJack.DAL.Repositories
 {
-    public enum WinningStatus
+    internal class PlayerRepository
     {
-        Win = 1,
-        Lose = 2
     }
 }

@@ -19,6 +19,6 @@ namespace BlackJack.Core.Entities
         public int ItemType { get; set; }
         public int Quantity { get; set; }
         public DateTime Send_Time { get; set; }
-
+        public Player Player { get; set; }
     }
 }

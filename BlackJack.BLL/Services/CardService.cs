@@ -22,10 +22,10 @@ namespace BlackJack.BLL.Services
         public async Task<List<Card>> GetCardsByHandId(int handId)
         {
             // Assuming you have a many-to-many relationship between Hand and Card through Hand_Card
-            var cards =await _baseRepository1.GetWhereAsync(hc => hc.HandId == handId);
-            var result= cards.Select(hc => hc.Card).ToList();
+            //var cards =await _baseRepository1.GetWhereAsync(hc => hc.HandId == handId);
+            //var result= cards.Select(hc => hc.Card).ToList();
 
-            return result;
+            return new List<Card>();
         }
 
         public async Task<IEnumerable<Card>> GetAllCards()

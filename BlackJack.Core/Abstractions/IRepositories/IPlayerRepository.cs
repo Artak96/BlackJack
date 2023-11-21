@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlackJack.Core.Enums
+namespace BlackJack.Core.Abstractions.IRepositories
 {
-    public enum WinningStatus
+    internal interface IPlayerRepository
     {
-        Win = 1,
-        Lose = 2
     }
 }

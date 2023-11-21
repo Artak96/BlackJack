@@ -21,6 +21,7 @@ namespace BlackJack.Core.Entities
         public DateTime Last_Login { get; set; }
         public bool IsMerchant { get; set; }   
         public bool IsOwner { get; set; }
-
+        public ICollection<Bet> Bets { get; set; }
+        public ICollection<Card> Cards { get; set; }
     }
 }

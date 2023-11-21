@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlackJack.Core.Enums
+namespace BlackJack.BLL.Services
 {
-    public enum WinningStatus
+    internal class DealerService
     {
-        Win = 1,
-        Lose = 2
     }
 }

@@ -10,10 +10,6 @@ namespace BlackJack.Core.Entities
 {
     public class Card
     {
-         public Card()
-        {
-            this.Hands = new HashSet<Hand>();
-        }
         [Key]
         public int CardId { get; set; }
         public int Value { get; set; }

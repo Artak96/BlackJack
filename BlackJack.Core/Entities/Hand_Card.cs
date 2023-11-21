@@ -14,6 +14,8 @@ namespace BlackJack.Core.Entities
         [ForeignKey("HandId")]
         public int HandId { get; set; }
         public bool IsFace { get; set; }
+        public ICollection<Hand> Hands { get; set; }
+        public ICollection<Card> Cards { get; set; }
 
     }
 }

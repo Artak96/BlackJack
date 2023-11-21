@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlackJack.Core.Enums
+namespace BlackJack.Core.Abstractions.IServices
 {
-    public enum WinningStatus
+    internal interface iViewerService
     {
-        Win = 1,
-        Lose = 2
     }
 }

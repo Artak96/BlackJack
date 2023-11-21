@@ -18,6 +18,7 @@ namespace BlackJack.Core.Entities
         public int GameId { get; set; }
         public int Initial_Player_Order { get; set; }
         public string? Score { get; set; }
-
+        public Player Player { get; set; }
+        public Game Game { get; set; }
     }
 }

@@ -19,6 +19,8 @@ namespace BlackJack.Core.Entities
         public int RoundId { get; set; }
         public ActionType Type { get; set; }
         public DateTime Action_Date { get; set; }
+        public ICollection<Player> Players { get; set; }
+        public ICollection<Round> Rounds { get; set; }
 
     }
 }
