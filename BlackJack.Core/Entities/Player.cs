@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    public class Player
+    public class Player : BaseEntity
     {
         [Key]
         public int PlayerId { get; set; }
@@ -21,6 +21,7 @@ namespace BlackJack.Core.Entities
         public DateTime Last_Login { get; set; }
         public bool IsMerchant { get; set; }   
         public bool IsOwner { get; set; }
+
         public ICollection<Bet> Bets { get; set; }
         public ICollection<Card> Cards { get; set; }
     }

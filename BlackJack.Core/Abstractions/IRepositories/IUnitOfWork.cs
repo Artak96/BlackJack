@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Abstractions.IRepositories
 {
-    public interface IunitofWork
+    public interface IUnitOfWork
     {
         IGameRepository Providers { get; }
+        IPlayerRepository Player { get; }
 
         void SaveChange();
-        //void Dispose(bool disposing);
+        void Dispose(bool disposing);
     }
 }

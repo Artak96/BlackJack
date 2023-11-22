@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    public class Hand
+    public class Hand : BaseEntity
     {
         [Key]
         public int HandId { get; set; }
@@ -19,6 +19,7 @@ namespace BlackJack.Core.Entities
         public int PlayerId { get; set; }
         public HandType HandType { get; set; }
         public int TotalValue { get; set; }
+
         public Round Round { get; set; }
         public Player Player { get; set; }
     }

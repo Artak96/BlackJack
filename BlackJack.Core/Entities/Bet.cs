@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    public class Bet
+    public class Bet : BaseEntity
     {
         [Key]
         public int BetId { get; set; }
@@ -19,7 +19,7 @@ namespace BlackJack.Core.Entities
         [ForeignKey("RoundId")]
         public int RoundId { get; set; }
         public decimal Amount { get; set; }
-        public DateTime Bet_Date { get; set; }
+
         public Player Player { get; set; }
         public Game Game { get; set; }
         public Round Round { get; set; }

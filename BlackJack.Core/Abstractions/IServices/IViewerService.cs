@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Abstractions.IServices
 {
-    internal interface iViewerService
+    public interface IViewerService
     {
     }
 }
