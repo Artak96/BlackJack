@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace BlackJack.Core.Entities
 {
     public class Transfer : BaseEntity
+
     {
         [Key]
         public int TransferId { get; set; }

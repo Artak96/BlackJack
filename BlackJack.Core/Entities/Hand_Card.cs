@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace BlackJack.Core.Entities
 {
     public class Hand_Card : BaseEntity
+
     {
         [ForeignKey("CardId")]
         public int CardId { get; set; }

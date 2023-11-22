@@ -16,6 +16,8 @@ namespace BlackJack.Core.Entities
         public Suit Suit { get; set; }
         public Rank Rank { get; set; }
         public bool IsFaceUp { get; set; }
+        public virtual ICollection<Hand> Hands { get; set; }
+
 
     }
 }

@@ -12,7 +12,7 @@ namespace BlackJack.Core.Entities.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Hand> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.HandId);
         }
     }
 }

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BlackJack.DAL.Migrations
 {
     [DbContext(typeof(BlackJackDbContext))]
-    [Migration("20231120172714_initial")]
-    partial class initial
+    [Migration("20231121052708_table-relations")]
+    partial class tablerelations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,14 +27,17 @@ namespace BlackJack.DAL.Migrations
 
             modelBuilder.Entity("BlackJack.Core.Entities.Bet", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BetId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("BetId"));
 
-                    b.Property<decimal>("Amounr")
+                    b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
+
+                    b.Property<DateTime>("Bet_Date")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
@@ -51,25 +54,21 @@ namespace BlackJack.DAL.Migrations
                     b.Property<int>("RoundId")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("BetId");
 
                     b.ToTable("Bets");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.Card", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CardId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CardId"));
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Face")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<bool>("IsFaceUp")
                         .HasColumnType("boolean");
@@ -77,30 +76,27 @@ namespace BlackJack.DAL.Migrations
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Rank")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Rank")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("Suit")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Suit")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Value")
+                        .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("CardId");
 
                     b.ToTable("Cards");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.GIFT", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GiftId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("GiftId"));
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
@@ -108,8 +104,8 @@ namespace BlackJack.DAL.Migrations
                     b.Property<int>("FromPlayerId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("GiftTime")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("ItemType")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
@@ -117,99 +113,67 @@ namespace BlackJack.DAL.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("Send_Time")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("ToPlayerId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
+                    b.HasKey("GiftId");
 
                     b.ToTable("GIFTs");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.Game", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GameId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("GameId"));
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("DealerId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("EndTime")
+                    b.Property<DateTime>("End_Date")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<float>("Percent")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Max_Bet")
+                        .HasColumnType("numeric");
 
-                    b.Property<DateTime>("StartTime")
+                    b.Property<decimal>("Min_Bet")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("Player_Count")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Start_Date")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("GameId");
 
                     b.ToTable("Games");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.GameAction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ActionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ActionId"));
 
-                    b.Property<DateTime>("CreatedTime")
+                    b.Property<DateTime>("Action_Date")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("LastUpdateTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("ParticipiantDealerId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("RoundId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Actions");
-                });
-
-            modelBuilder.Entity("BlackJack.Core.Entities.Hand", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("HandType")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
@@ -220,10 +184,35 @@ namespace BlackJack.DAL.Migrations
                     b.Property<int>("RoundId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ActionId");
+
+                    b.ToTable("Actions");
+                });
+
+            modelBuilder.Entity("BlackJack.Core.Entities.Hand", b =>
+                {
+                    b.Property<int>("HandId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HandId"));
+
+                    b.Property<int>("HandType")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RoundId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("TotalValue")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("HandId");
 
                     b.ToTable("Hands");
                 });
@@ -239,21 +228,26 @@ namespace BlackJack.DAL.Migrations
                     b.Property<int>("HandId")
                         .HasColumnType("integer");
 
+                    b.Property<bool>("IsFace")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasIndex("CardId");
+
+                    b.HasIndex("HandId");
 
                     b.ToTable("HandCards");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.Mineral", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MineralId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MineralId"));
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
@@ -269,21 +263,21 @@ namespace BlackJack.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<float>("Value")
-                        .HasColumnType("real");
+                    b.Property<int>("Value")
+                        .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("MineralId");
 
                     b.ToTable("Minerals");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.Mineral_Transaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MineralTransactionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MineralTransactionId"));
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
@@ -291,33 +285,30 @@ namespace BlackJack.DAL.Migrations
                     b.Property<int>("GameId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("Initial_Player_Order")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("PrizeId")
+                    b.Property<int>("PlayerId")
                         .HasColumnType("integer");
 
-                    b.Property<float>("Quantity")
-                        .HasColumnType("real");
+                    b.Property<string>("Score")
+                        .HasColumnType("text");
 
-                    b.Property<int>("RoundId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("TransactionTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
+                    b.HasKey("MineralTransactionId");
 
                     b.ToTable("Mineral_Transactions");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.Player", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PlayerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PlayerId"));
 
                     b.Property<decimal>("Balance")
                         .HasColumnType("numeric");
@@ -326,7 +317,9 @@ namespace BlackJack.DAL.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
-                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("First_Name")
                         .HasColumnType("text");
 
                     b.Property<bool>("IsMerchant")
@@ -335,35 +328,36 @@ namespace BlackJack.DAL.Migrations
                     b.Property<bool>("IsOwner")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("LastLogin")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<DateTime>("Last_Login")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Last_Name")
                         .HasColumnType("text");
 
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
+                    b.Property<string>("Mobile")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Nick_Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("User_Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("PlayerId");
 
                     b.ToTable("Players");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.Prize", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PrizeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PrizeId"));
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
@@ -374,31 +368,36 @@ namespace BlackJack.DAL.Migrations
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("RoundId")
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Prize_Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("RounId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("PrizeId");
 
                     b.ToTable("Prizes");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.Round", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RoundId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RoundId"));
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("DealerHandValue")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("GameId")
                         .HasColumnType("integer");
@@ -406,25 +405,33 @@ namespace BlackJack.DAL.Migrations
                     b.Property<DateTime>("LastUpdateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("PlayerHandValue")
+                    b.Property<decimal>("Max_Bet")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Min_Bet")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("PlayerCount")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Result")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Result")
+                        .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("Start_Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("RoundId");
 
                     b.ToTable("Rounds");
                 });
 
             modelBuilder.Entity("BlackJack.Core.Entities.Transfer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TransferId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("TransferId"));
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
@@ -444,22 +451,22 @@ namespace BlackJack.DAL.Migrations
                     b.Property<DateTime>("TransferTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("Id");
+                    b.HasKey("TransferId");
 
                     b.ToTable("Transfers");
                 });
 
             modelBuilder.Entity("CardHand", b =>
                 {
-                    b.Property<int>("CardsId")
+                    b.Property<int>("CardsCardId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("HandsId")
+                    b.Property<int>("HandsHandId")
                         .HasColumnType("integer");
 
-                    b.HasKey("CardsId", "HandsId");
+                    b.HasKey("CardsCardId", "HandsHandId");
 
-                    b.HasIndex("HandsId");
+                    b.HasIndex("HandsHandId");
 
                     b.ToTable("CardHand");
                 });
@@ -472,20 +479,28 @@ namespace BlackJack.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BlackJack.Core.Entities.Hand", "Hand")
+                        .WithMany()
+                        .HasForeignKey("HandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Card");
+
+                    b.Navigation("Hand");
                 });
 
             modelBuilder.Entity("CardHand", b =>
                 {
                     b.HasOne("BlackJack.Core.Entities.Card", null)
                         .WithMany()
-                        .HasForeignKey("CardsId")
+                        .HasForeignKey("CardsCardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BlackJack.Core.Entities.Hand", null)
                         .WithMany()
-                        .HasForeignKey("HandsId")
+                        .HasForeignKey("HandsHandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

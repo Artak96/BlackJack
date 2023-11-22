@@ -10,6 +10,7 @@ namespace BlackJack.Core.Entities
 {
     public class Mineral_Transaction : BaseEntity
     { 
+
         [Key]
         public int MineralTransactionId { get; set;}
         [ForeignKey("PlayerId")]
