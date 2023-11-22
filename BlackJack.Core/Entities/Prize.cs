@@ -18,7 +18,8 @@ namespace BlackJack.Core.Entities
         public int PlayerId { get; set; }
         public decimal Amount { get; set; }
         public string? Type { get; set; }
-        public DateTime Prize_Date { get; set; }
 
+        public Round Round { get; set; }
+        public Player Player { get; set; }
     }
 }

@@ -16,9 +16,9 @@ using System.Threading.Tasks;
 
 namespace BlackJack.BLL.Extensions
 {
-    public static class BllServicesRegistration
+    public static class ServicesRegistration
     {
-        public static IServiceCollection BllServicesRegister(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ServicesRegister(this IServiceCollection services, IConfiguration configuration)
         {
             AddSQLServerConfig(services, configuration);
 
@@ -29,6 +29,10 @@ namespace BlackJack.BLL.Extensions
             services.AddScoped<IGameService, GameService>();
             services.AddScoped<IHandService, HandService>();
             services.AddScoped<IPlayerService, PlayerService>();
+            services.AddScoped<IViewerService, ViewService>();
+            services.AddScoped<IDealerService, DealerService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }

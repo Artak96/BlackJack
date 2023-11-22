@@ -9,12 +9,8 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Core.Entities
 {
-    public class Hand
+    public class Hand : BaseEntity
     {
-        public Hand()
-        {
-            this.Cards = new HashSet<Card>();
-        }
         [Key]
         public int HandId { get; set; }
         [ForeignKey("RoundId")]
@@ -25,5 +21,7 @@ namespace BlackJack.Core.Entities
         public int TotalValue { get; set; }
         public virtual ICollection<Card> Cards { get; set; }
 
+        public Round Round { get; set; }
+        public Player Player { get; set; }
     }
 }

@@ -19,8 +19,10 @@ namespace BlackJack.BLL.Services
 
         public bool CheckForBlackjack(Hand hand)
         {
-            var vall = _handService.CalculateHandValue(hand);
-            return hand.Cards.Count == 2 &&  vall== 21;
+            //var vall = _handService.CalculateHandValue(hand);
+            //return hand.Cards.Count == 2 &&  vall == 21;
+            return true;
+
         }
 
         public bool IsBust(Hand hand)
@@ -32,14 +34,17 @@ namespace BlackJack.BLL.Services
         {
             // Logic to check if the hand can be split (e.g., having two cards of the same value)
             // Implementation based on game rules
-            return hand.Cards.Count == 2 && hand.Cards.FirstOrDefault().Value == hand.Cards.LastOrDefault().Value;
+            //return hand.Cards.Count == 2 && hand.Cards.FirstOrDefault().Value == hand.Cards.LastOrDefault().Value;
+            return true;
+
         }
 
         public bool CanDoubleDown(Hand hand)
         {
             // Logic to check if the hand is eligible for doubling down
             // Implementation based on game rules
-            return hand.Cards.Count == 2;
+            //return hand.Cards.Count == 2;
+            return true;
         }
 
         public bool IsHandWinner(Hand playerHand, Hand dealerHand)

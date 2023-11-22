@@ -22,5 +22,7 @@ namespace BlackJack.Core.Entities
         public bool IsMerchant { get; set; }   
         public bool IsOwner { get; set; }
 
+        public ICollection<Bet> Bets { get; set; }
+        public ICollection<Card> Cards { get; set; }
     }
 }
